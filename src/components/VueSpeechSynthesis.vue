@@ -5,12 +5,6 @@
 </template>
 
 <script>
-const redirectedMethods = [
-  'cancel',
-  'pause',
-  'resume'
-]
-
 export default {
   name: 'VueSpeechSynthesis',
   props: {
