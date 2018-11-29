@@ -2,6 +2,8 @@
 
 > VueJs integration and components for the Web Speech API
 
+### [DEMO](https://codekraft-studio.github.io/vue-speech/)
+
 ## Installation
 
 First install this project with your favourite package manager:
