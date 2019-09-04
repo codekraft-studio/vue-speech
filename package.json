@@ -2,7 +2,7 @@
   "name": "@codekraft-studio/vue-speech",
   "description": "VueJs integration and components for the Web Speech API",
   "version": "0.1.0",
-  "main": "./dist/VueSpeech.common.js",
+  "main": "./dist/VueSpeech.umd.js",
   "files": [
     "dist"
   ],
@@ -10,6 +10,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name VueSpeech src/components/index.js",
     "build:demo": "vue-cli-service build --dest demo",
+    "publish:demo": "git subtree push --prefix demo origin gh-pages",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {

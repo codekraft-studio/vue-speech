@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-speech" :class="{
+  <div class="vue-speech-recognition" :class="{
     'active': isRecognizing
   }" @click="start">
     <span></span>
@@ -47,18 +47,10 @@ export default {
   methods: {
     start () {
       if (this.isRecognizing) {
-        this.abort()
+        this.$_recognition.abort()
         return
       }
-
       this.$_recognition.start()
-    },
-    abort () {
-      if (!this.isRecognizing) {
-        return
-      }
-
-      this.$_recognition.abort()
     }
   },
   created () {
@@ -108,13 +100,13 @@ export default {
       }
 
       this.runtimeTranscription = ''
+      this.$emit('end')
     })
 
     // Redirect standard events as Vue component events
     redirectedEvents.forEach(eName => {
       const originalEvent = eName.replace('-', '')
-      this.$_recognition.addEventListener(originalEvent, (event) => {
-        console.log(originalEvent, 'event happened', event);
+      this.$_recognition.addEventListener(originalEvent, () => {
         this.$emit(eName)
       })
     })
@@ -123,16 +115,14 @@ export default {
 </script>
 
 <style lang="scss">
-  .vue-speech {
+  .vue-speech-recognition {
+    cursor: pointer;
     position: relative;
-    margin: 5% auto;
     background-color: #4DB6AC;
     border-radius: 50%;
     width: 64px;
     height: 64px;
     display: block;
-    cursor: pointer;
-    box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
 
     &:hover {
       background-color: #26A69A;
@@ -193,6 +183,7 @@ export default {
         border-radius: 50%;
         border: 0.125em solid #fff;
         background: none;
+        right: 0px;
       }
 
       &:after {
@@ -205,6 +196,10 @@ export default {
   }
 
   @keyframes pulse {
+    from {
+      box-shadow: 0 0 0 0 rgba(232, 76, 61, 0.7);
+    }
+
     to {
       box-shadow: 0 0 0 10px rgba(239, 83, 80, 0.1);
       background-color: #E53935;

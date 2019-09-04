@@ -17,10 +17,14 @@
 
     <main>
       <div class="container">
-        <vue-speech-recognition lang="it" @start="onStart" @end="onEnd" @transcription="onTranscription" />
+        <div class="buttons-container">
+          <vue-speech-recognition lang="it" @start="onStart" @end="onEnd" @transcription="onTranscription" />
+          <vue-speech-synthesis color="#26A69A" :width="64" :height="64" lang="en" text="vue speech is awesome" @stop="onAwesomeSpeakStop" @end="onAwesomeSpeakEnd" />
+        </div>
 
         <div class="results-box">
-          {{capturedText.join(' ')}}
+          <span>{{capturedText.join(' ')}}</span>
+          <vue-speech-synthesis color="#F8BBD0" :text="capturedText" />
         </div>
       </div>
     </main>
@@ -41,14 +45,23 @@ export default {
   name: 'app',
   data () {
     return {
-      capturedText: []
+      inputText: 'ciao pippuzzo',
+      capturedText: [],
+      awesomeCount: 0
     }
   },
   methods: {
+    onAwesomeSpeakStop () {
+      console.log('Vue Speech stopped.');
+    },
+    onAwesomeSpeakEnd () {
+      console.log('Vue Speech is awesome!')
+      this.awesomeCount = this.awesomeCount + 1
+    },
     onStart () {
       console.log('Voice recognition started.');
     },
-    onEnd (data) {
+    onEnd () {
       console.log('Voice recognition ended.');
     },
     onTranscription ({lastSentence}) {
@@ -62,12 +75,14 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   .navbar {
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 10px 20px;
     background-color: #fafafa;
+    margin-bottom: 20px;
   }
 
   .navbar-brand img {
@@ -75,11 +90,29 @@ export default {
       max-height: 100%;
   }
 
+  .buttons-container {
+    display: flex;
+    max-width: 400px;
+    text-align: center;
+    margin: 0 auto;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
   .results-box {
+    position: relative;
     background-color: #f9f3f5;
     padding: 20px;
     min-height: 150px;
+    max-width: 800px;
+    margin: 0 auto;
     border: thin solid #F8BBD0;
+
+    .vue-speech-synthesis {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
   }
 
   footer {
