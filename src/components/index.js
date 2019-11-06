@@ -1,11 +1,12 @@
 import VueSpeechRecognition from './VueSpeechRecognition'
 import VueSpeechSynthesis from './VueSpeechSynthesis'
 
-export default function install (Vue, options = {}) {
+export {
+  VueSpeechRecognition,
+  VueSpeechSynthesis
+}
 
-  if (!options.components || options.components === 'all') {
-    Vue.component('vue-speech-recognition', VueSpeechRecognition)
-    Vue.component('vue-speech-synthesis', VueSpeechSynthesis)
-  }
-
+export default function install (Vue) {
+  Vue.component('VueSpeechRecognition', VueSpeechRecognition)
+  Vue.component('VueSpeechSynthesis', VueSpeechSynthesis)
 }

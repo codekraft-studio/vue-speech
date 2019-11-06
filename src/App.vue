@@ -18,7 +18,12 @@
     <main>
       <div class="container">
         <div class="buttons-container">
-          <vue-speech-recognition lang="it" @start="onStart" @end="onEnd" @transcription="onTranscription" />
+          <vue-speech-recognition
+            :lang="inputLang"
+            @start="onStart"
+            @end="onEnd"
+            @transcription="onTranscription"
+          />
           <vue-speech-synthesis color="#26A69A" :width="64" :height="64" lang="en" text="vue speech is awesome" @stop="onAwesomeSpeakStop" @end="onAwesomeSpeakEnd" />
         </div>
 
@@ -45,6 +50,7 @@ export default {
   name: 'app',
   data () {
     return {
+      inputLang: 'it',
       inputText: 'ciao pippuzzo',
       capturedText: [],
       awesomeCount: 0
@@ -76,13 +82,29 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  main {
+    height: 100%;
+  }
+}
   .navbar {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 10px 20px;
     background-color: #fafafa;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .navbar-brand img {
@@ -113,9 +135,5 @@ export default {
       right: 10px;
       top: 10px;
     }
-  }
-
-  footer {
-    margin-top: 50px;
   }
 </style>

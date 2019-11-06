@@ -1,5 +1,6 @@
 module.exports = {
-  baseUrl: process.env.NODE_ENV === 'production'
+  lintOnSave: true,
+  publicPath: process.env.NODE_ENV === 'production'
     ? '/vue-speech/'
     : '/',
   css: {

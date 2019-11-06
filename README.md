@@ -2,59 +2,42 @@
 
 > VueJs integration and components for the Web Speech API
 
-### [DEMO](https://codekraft-studio.github.io/vue-speech/)
+[![NPM version][npm-image]][npm-url] [![Dependency Status][daviddm-image]][daviddm-url] [![License][license-image]][license-url]
 
 ## Installation
 
-First install this project with your favourite package manager:
+Install this project with your favourite package manager:
 
 ```
 npm install @codekraft-studio/vue-speech
-yarn add @codekraft-studio/vue-speech
 ```
 
-Than import it in your project and ensure Vue loads it:
+## Usage
 
+Import the plugin in your project and ensure Vue loads it.
 
 ```js
+import Vue from 'vue'
 import VueSpeech from '@codekraft-studio/vue-speech'
 
 Vue.use(VueSpeech)
 ```
 
-The project exposes two different components that can be used directly in your templates:
+## Documentation
 
-```html
-<vue-speech-recognition />
-<vue-speech-synthesis />
-```
+Checkout the online [documentation](https://codekraft-studio.github.io/vue-speech/) to see how the components can be used in details.
 
 ---
 
-## Project setup
-```
-npm install
-```
+## License
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+This package is under [MIT License](./LICENSE)
 
-### Compiles and minifies for production
-```
-npm run build
-```
+[npm-image]: https://badge.fury.io/js/%40codekraft-studio%2Fvue-speech.svg
+[npm-url]: https://npmjs.org/package/@codekraft-studio/vue-speech
 
-### Run your tests
-```
-npm run test
-```
+[daviddm-image]: https://david-dm.org/codekraft-studio/vue-speech.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/codekraft-studio/vue-speech
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[license-url]: https://github.com/codekraft-studio/vue-speech/blob/master/LICENSE
+[license-image]: https://img.shields.io/badge/license-MIT-blue.svg
