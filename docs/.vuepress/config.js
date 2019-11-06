@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/vue-speech/',
     title: 'Vue Speech',
     description: 'VueJs integration and components for the Web Speech API',
     themeConfig: {
